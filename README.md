@@ -1,71 +1,107 @@
-# Getting Started with Create React App
+# Project Title - YouChoose
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+Film selection app (to start with!). Users linked to the same account swipe on films. If they see a film they want to watch, they swipe right, or left to discard the film. When both users swipe right on a film, they will get a "match". The film they have matched on will be transferred to a 'match' page.
+### Problem
 
-In the project directory, you can run:
+This app will solvce the problem on spending hours on deciding what film to watch. When users want to watch a film, they can look at their match page instead of scrolling films.
 
-### `npm start`
+### User Profile
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Couples, flatmates, families, groups of friends.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Features
 
-### `npm test`
+Swiping feature on films (or maybe a thumbs up, thumbs down) so users can like (or dislike) a film. 
+A match page of films both users have liked.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Implementation
 
-### `npm run build`
+### Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+List technologies that will be used in your app, including any libraries to save time or provide more functionality. Be sure to research any potential limitations.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+React, Node.js, (possibly) react-swipeable https://www.npmjs.com/package/react-swipeable
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### APIs
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+https://rapidapi.com/SAdrian/api/MoviesDatabase/
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Sitemap
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+List the pages of your app with brief descriptions. You can show this visually, or write it out.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+Swiping films page (homepage).
+Matched films page - list of films users both like
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Mockups
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Provide visuals of your app's screens. You can use tools like Figma or pictures of hand-drawn sketches.
 
-### Code Splitting
+![Alt text](images/IMG_1500.jpg)
+![Alt text](images/IMG_1501.jpg)
+![Alt text](images/IMG_1502.jpg)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Data
 
-### Making a Progressive Web App
+Describe your data and the relationships between them. You can show this visually using diagrams, or write it out. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Every one user has many films they like (one to many)
 
-### Advanced Configuration
+### Endpoints
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+List endpoints that your server will implement, including HTTP methods, parameters, and example responses.
 
-### Deployment
+/GET - will get the list of films from the API.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+/DELETE - will delete a film from the users list of matched films.
 
-### `npm run build` fails to minify
+/GET/titles/most_pop_movies/?startYear=2012 - (for example. this will get all the most popular films from the year 2012 to present)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# anoushka-patel-capstone
+
+### Auth
+
+Does your project include any login or user profile functionality? If so, describe how authentication/authorization will be implemented.
+
+## Roadmap
+
+Scope your project as a sprint. Break down the tasks that will need to be completed and map out timeframes for implementation. Think about what you can reasonably complete before the due date. The more detail you provide, the easier it will be to build.
+
+
+Task 1 (backend): create the backend endpoints using the API (incuding how to filter for the required fields). Test the backend API to ensure it successfully retrieves and returns the list of most popular movies.
+
+
+
+Task 2(frontend): Set up react app and components: e.g. App.js, FilmCard, FilmList etc.
+
+Modify the frontend to make API requests to the Node.js backend for movie data.
+
+Display the list of most popular movies on the frontend.
+Ensure that the frontend can render the data received from the backend.
+
+
+Implement the swiping motion using react-swipeable 
+
+
+Task 3: TEST!
+
+
+
+## Nice-to-haves
+
+Your project will be marked based on what you committed to in the above document. Under nice-to-haves, you can list any additional features you may complete if you have extra time, or after finishing.
+
+User auth
+
+Rate a film
+
+Users can filter by genre
+
+When a film has been watched users can select "watched" and it will disappear from their matches page
+
+Suggest films based on users likes.
