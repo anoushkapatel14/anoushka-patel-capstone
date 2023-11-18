@@ -1,8 +1,11 @@
 import "./App.scss";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage/HomePage";
 import Header from "./components/Header/Header";
-import HomePage from "./components/pages/HomePage/HomePage";
-// import UploadPage from "./components/pages/UploadPage/UploadPage";
+import MatchesPage from "./pages/MatchesPage/MatchesPage";
+import FooterNav from "./components/FooterNav/FooterNav";
+
+
 
 export default function App() {
   return (
@@ -12,11 +15,11 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="home" element={<Navigate to="/" />} />
-          {/* <Route path="/videos/:videoId" element={<HomePage />} />
-          <Route path="/upload" element={<UploadPage />} /> */}
+          <Route path="matches" element={<MatchesPage />} />
         </Routes>
       </div>
-      ;
+      <FooterNav />
+      
     </BrowserRouter>
   );
 }

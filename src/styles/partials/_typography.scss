@@ -1,29 +1,53 @@
 @font-face {
-    font-family: "Avenir";
-    src: url("../../assets/fonts/AvenirNextLTPro-Bold.otf") format("opentype"),
-      url("../../assets/fonts/alternative-fonts/AvenirNextLTProBold.ttf")
+    font-family: "Boston";
+    src: url("../../assets/fonts/BostonExtraLight.otf") format("opentype"),
         format("truetype");
-    font-weight: 700;
+    font-weight: 100;
   }
   
   
   @font-face {
-    font-family: "Avenir";
-    src: url("../../assets/fonts/AvenirNextLTPro-Regular.otf") format("opentype"),
-      url("../../assets/fonts/alternative-fonts/AvenirNextLTPro.ttf")
+    font-family: "Boston";
+    src: url("../../assets/fonts/BostonLight.otf") format("opentype"),
+      format("truetype");
+    font-weight: 200;
+  }
+  
+  @font-face {
+    font-family: "Boston";
+    src: url("../../assets/fonts/BostonThin.otf") format("opentype"),
+      format("truetype");
+    font-weight: 300;
+  }
+
+  @font-face {
+    font-family: "Boston";
+    src: url("../../assets/fonts/BostonRegular.otf") format("opentype"),
       format("truetype");
     font-weight: 400;
   }
-  
-@font-face {
-  font-family: "Avenir";
-  src: url("../../assets/fonts/AvenirNextLTPro-Demi.otf") format("opentype"),
-  url("../../assets/fonts/alternative-fonts/AvenirNextLTProDemi.ttf")
-  format("truetype");
-font-weight: 600;
-}
+
+  @font-face {
+    font-family: "Boston";
+    src: url("../../assets/fonts/BostonSemiBold.otf") format("opentype"),
+      format("truetype");
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: "Boston";
+    src: url("../../assets/fonts/BostonBold.otf") format("opentype"),
+      format("truetype");
+    font-weight: 600;
+  }
+  @font-face {
+    font-family: "Boston";
+    src: url("../../assets/fonts/BostonHeavy.otf") format("opentype"),
+      format("truetype");
+    font-weight: 700;
+  }
 
   * {
-    font-family: "Avenir", sans-serif;
+    font-family: "Boston", sans-serif;
   }
   

@@ -1,0 +1,33 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+
+.footer {
+position: fixed;
+z-index: 20;
+bottom: 0;
+width: 100%;
+max-width: $max-width;
+padding: $wrapper-padding;
+background-color: $blue;
+height: 4rem;
+display: flex;
+align-items: center;
+justify-content: space-around;
+
+
+&__icons-div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 1rem;
+}
+
+&__text {
+    margin-top: 0.2rem;
+}
+
+&__icon {
+    height: 2rem;
+}
+}

@@ -16,6 +16,8 @@ Couples, flatmates, families, groups of friends.
 Swiping feature on films (or maybe a thumbs up, thumbs down) so users can like (or dislike) a film. 
 A match page of films both users have liked.
 
+logo : https://www.canva.com/design/DAF0hZa7yis/WLroYt-MXgI_iZvQIyyUHw/edit 
+
 ## Implementation
 
 ### Tech Stack

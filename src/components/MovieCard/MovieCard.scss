@@ -1,0 +1,46 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.movie-card-container {
+    border: 2px solid black;
+    margin-top: 8rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    background-color: $blue;
+    color: $white;
+    border-radius: 4px;
+    padding: 0 1rem 2rem 1rem;
+    position: absolute;
+    top: 10;
+    &.swipe-out-left {
+        animation: swipe-out-left 1s ease-out;
+    }
+    &.swipe-out-right {
+        animation: swipe-out-right 1s ease-out;
+    }
+}
+
+.movie-card {
+    &__title {
+        font-weight: 600;
+        text-decoration: underline;
+        font-size: 2rem;
+    }
+    &__img {
+        height: 15rem;
+    }
+}
+
+@keyframes swipe-out-left {
+  to {
+    opacity: 0;
+    transform: translateX(-100%) rotate(20deg);
+  }
+}
+
+@keyframes swipe-out-right {
+  to {
+    opacity: 0;
+    transform: translateX(100%) rotate(20deg);
+  }
+}
