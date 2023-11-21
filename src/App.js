@@ -5,8 +5,6 @@ import Header from "./components/Header/Header";
 import MatchesPage from "./pages/MatchesPage/MatchesPage";
 import FooterNav from "./components/FooterNav/FooterNav";
 
-
-
 export default function App() {
   return (
     <BrowserRouter>
@@ -19,7 +17,6 @@ export default function App() {
         </Routes>
       </div>
       <FooterNav />
-      
     </BrowserRouter>
   );
 }

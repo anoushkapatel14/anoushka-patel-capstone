@@ -1,0 +1,31 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+// .matches-movie-card {
+//     background-color: $blue;
+//     border: solid 2px $white;
+//     width: 40%;
+//     margin-bottom: 2rem;
+// }
+
+.match-card {
+  color: white;
+  display: flex;
+  background-color: $blue;
+  flex-direction: column;
+  width: 40%;
+  align-items: center;
+  margin: 1rem;
+
+  
+  &__title {
+    font-weight: 500;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  &__img {
+    width: 7rem;
+    padding-bottom: 1.5rem;
+  }
+}

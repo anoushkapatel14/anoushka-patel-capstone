@@ -16,7 +16,7 @@ export default function MovieCard({ movies, onSwipeLeft, onSwipeRight }) {
     onSwipedLeft: () => {
       console.log("Swiped Left");
       setSwipeDirection("left");
-      onSwipeLeft([...movies]); 
+      onSwipeLeft([...movies]);
       moveToNextMovie();
     },
 
@@ -25,16 +25,25 @@ export default function MovieCard({ movies, onSwipeLeft, onSwipeRight }) {
       setSwipeDirection("right");
       onSwipeRight();
       onSwipeRight(currentMovie);
-      moveToNextMovie(); 
+      moveToNextMovie();
     },
   });
 
   const moveToNextMovie = () => {
     setCurrentMovieIndex((prevIndex) => prevIndex + 1);
+
+    // Reset swipe direction after the animation duration
+    setTimeout(() => {
+      setSwipeDirection(null);
+    }, 1000); // Adjust this value to match your animation duration
   };
 
   const getAnimationClass = () => {
-    return swipeDirection === "left" ? "swipe-out-left" : swipeDirection === "right" ? "swipe-out-right" : "";
+    return swipeDirection === "left"
+      ? "swipe-out-left"
+      : swipeDirection === "right"
+      ? "swipe-out-right"
+      : "";
   };
 
   if (movies.length === 0) {
@@ -47,8 +56,14 @@ export default function MovieCard({ movies, onSwipeLeft, onSwipeRight }) {
   }
 
   return (
-    <div className={`movie-card-container ${getAnimationClass()}`} {...swipeHandlers}>
-      <div key={currentMovie.id} className={`movie-card ${getAnimationClass()}`}>
+    <div
+      className={`movie-card-container ${getAnimationClass()}`}
+      {...swipeHandlers}
+    >
+      <div
+        key={currentMovie.id}
+        className={`movie-card ${getAnimationClass()}`}
+      >
         <h2 className="movie-card__title">{currentMovie.title}</h2>
         <img
           className="movie-card__img"
@@ -56,12 +71,19 @@ export default function MovieCard({ movies, onSwipeLeft, onSwipeRight }) {
           alt={currentMovie.title}
         />
         <p className="movie-card__overview">{currentMovie.overview}</p>
-        <p className="movie-card__date">Release date: {currentMovie.release_date}</p>
-        <p className="movie-card__rating">Rating: {currentMovie.vote_average}</p>
+        <p className="movie-card__date">
+          Release date: {currentMovie.release_date}
+        </p>
+        <p className="movie-card__rating">
+          Rating: {currentMovie.vote_average}
+        </p>
       </div>
 
       {currentMovieIndex < movies.length - 1 && (
-        <div key={movies[currentMovieIndex + 1].id} className={`movie-card ${getAnimationClass()}`}></div>
+        <div
+          key={movies[currentMovieIndex + 1].id}
+          className={`movie-card ${getAnimationClass()}`}
+        ></div>
       )}
     </div>
   );

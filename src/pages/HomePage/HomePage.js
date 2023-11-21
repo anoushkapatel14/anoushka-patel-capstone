@@ -14,33 +14,48 @@ export default function HomePage() {
 
   const navigate = useNavigate();
 
+  // console.log(movies);
+  
   const handleSwipeLeft = (eventData) => {
     setMovies((prevMovies) => {
-      const updatedMovies = prevMovies.filter((movie, index) => index !== currentMovieIndex);
+      // const updatedMovies = prevMovies.filter((movie, index) => index !== currentMovieIndex);
       setCurrentMovieIndex((prevIndex) =>
         prevIndex > 0 ? prevIndex - 1 : 0
       );
-      console.log("Swiped Left", eventData);
-      return updatedMovies;
+            console.log("Swiped Left", eventData);
+
+
+      return prevMovies;
     });
   };
   
 
   const handleSwipeRight = async () => {
+
     try {
       const currentMovie = movies[currentMovieIndex];
+      console.log("current movie:", currentMovie);
+      console.log("current movie index:", currentMovieIndex);
+
+
+      // setCurrentMovieIndex (currentMovieIndex + 1)
+
+       setCurrentMovieIndex((prevIndex) =>
+        prevIndex < movies.length - 1 ? prevIndex + 1 : 0
+      );
+
 
       
       await axios.post(
-        `${process.env.REACT_APP_BASE_URL}/api/matches/swipe-right`,
+        `${process.env.REACT_APP_BASE_URL}/api/likes`,
         {
-          userId: "123", // Replace with the actual user ID
+          userId: "2", // Replace with the actual user ID
           movieId: currentMovie.id,
           title: currentMovie.title,
-          posterPath: currentMovie.poster_path,
+          poster_path: currentMovie.poster_path,
           overview: currentMovie.overview,
-          releaseDate: currentMovie.release_date,
-          voteAverage: currentMovie.vote_average,
+          release_date: currentMovie.release_date,
+          vote_average: currentMovie.vote_average,
         }
       );
 
@@ -56,11 +71,8 @@ export default function HomePage() {
         },
       ]);
 
-      setCurrentMovieIndex((prevIndex) =>
-        prevIndex < movies.length - 1 ? prevIndex + 1 : 0
-      );
+     
 
-      console.log("Swiped Right");
     } catch (error) {
       console.error(error);
     }
@@ -89,7 +101,7 @@ export default function HomePage() {
       }
     };
     getMovies();
-  }, [matches]);
+  }, []);
 
   const [{ x }, set] = useSpring(() => ({ x: 0 }));
 
@@ -109,16 +121,10 @@ export default function HomePage() {
         />
       </animated.div>
 
-      {matches.length > 0 && (
-        <div>
-          <h2>Matches</h2>
-          {matches.map((match) => (
-            <div key={match.id} className="match-card">
-              <h3>{match.title}</h3>
-            </div>
-          ))}
-        </div>
-      )}
+
     </main>
   );
 }
+
+
+//touch and mouse events, pointer events

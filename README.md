@@ -29,7 +29,8 @@ React, Node.js, (possibly) react-swipeable https://www.npmjs.com/package/react-s
 
 ### APIs
 
-https://rapidapi.com/SAdrian/api/MoviesDatabase/
+
+https://developer.themoviedb.org/docs/image-basics 
 
 ### Sitemap
 

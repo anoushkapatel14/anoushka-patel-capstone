@@ -1,9 +1,11 @@
 @use "./styles/partials/typography" as*;
+@use "./styles/partials/variables" as*;
 
 .App {
   text-align: center;
-  height: 100vh;
+  // height: 100vh;
   background-color: black;
   min-height: calc(100vh - 5rem);
+  max-width: $max-width;
 }
 

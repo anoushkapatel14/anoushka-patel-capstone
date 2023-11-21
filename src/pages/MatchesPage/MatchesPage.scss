@@ -1,2 +1,24 @@
 @use "../../styles/partials/mixins" as*;
 @use "../../styles/partials/variables" as *;
+
+
+.matches {
+    min-height: calc(100vh - 5rem);
+
+    &__title {
+        padding-top: 7rem;
+        color: $white;
+        text-decoration: underline;
+    }
+}
+
+.matches-cards {
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+
+
+
+
