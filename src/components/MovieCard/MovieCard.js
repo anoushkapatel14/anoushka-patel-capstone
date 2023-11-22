@@ -23,7 +23,6 @@ export default function MovieCard({ movies, onSwipeLeft, onSwipeRight }) {
     onSwipedRight: () => {
       console.log("Swiped Right");
       setSwipeDirection("right");
-      onSwipeRight();
       onSwipeRight(currentMovie);
       moveToNextMovie();
     },

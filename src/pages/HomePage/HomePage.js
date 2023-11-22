@@ -15,49 +15,39 @@ export default function HomePage() {
   const navigate = useNavigate();
 
   // console.log(movies);
-  
+
   const handleSwipeLeft = (eventData) => {
     setMovies((prevMovies) => {
       // const updatedMovies = prevMovies.filter((movie, index) => index !== currentMovieIndex);
-      setCurrentMovieIndex((prevIndex) =>
-        prevIndex > 0 ? prevIndex - 1 : 0
-      );
-            console.log("Swiped Left", eventData);
-
+      setCurrentMovieIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
+      console.log("Swiped Left", eventData);
 
       return prevMovies;
     });
   };
-  
 
   const handleSwipeRight = async () => {
-
     try {
       const currentMovie = movies[currentMovieIndex];
       console.log("current movie:", currentMovie);
       console.log("current movie index:", currentMovieIndex);
-
+      console.log("SWPIED");
 
       // setCurrentMovieIndex (currentMovieIndex + 1)
 
-       setCurrentMovieIndex((prevIndex) =>
+      setCurrentMovieIndex((prevIndex) =>
         prevIndex < movies.length - 1 ? prevIndex + 1 : 0
       );
 
-
-      
-      await axios.post(
-        `${process.env.REACT_APP_BASE_URL}/api/likes`,
-        {
-          userId: "2", // Replace with the actual user ID
-          movieId: currentMovie.id,
-          title: currentMovie.title,
-          poster_path: currentMovie.poster_path,
-          overview: currentMovie.overview,
-          release_date: currentMovie.release_date,
-          vote_average: currentMovie.vote_average,
-        }
-      );
+      await axios.post(`${process.env.REACT_APP_BASE_URL}/api/likes`, {
+        userId: "2", // Replace with the actual user ID
+        movieId: currentMovie.id,
+        title: currentMovie.title,
+        poster_path: currentMovie.poster_path,
+        overview: currentMovie.overview,
+        release_date: currentMovie.release_date,
+        vote_average: currentMovie.vote_average,
+      });
 
       setMatches((prevMatches) => [
         ...prevMatches,
@@ -70,9 +60,6 @@ export default function HomePage() {
           voteAverage: currentMovie.vote_average,
         },
       ]);
-
-     
-
     } catch (error) {
       console.error(error);
     }
@@ -80,12 +67,15 @@ export default function HomePage() {
 
   const swipeHandlers = useSwipeable({
     onSwiped: (eventData) => {
+      console.log("Swipe Event Data:", eventData);
+
       if (eventData.dir === "Left") {
         handleSwipeLeft(eventData);
       } else if (eventData.dir === "Right") {
-        handleSwipeRight(eventData);
+        // handleSwipeRight(eventData);
       }
     },
+    swipeDuration: 250,
   });
 
   useEffect(() => {
@@ -115,16 +105,13 @@ export default function HomePage() {
       >
         <MovieCard
           movies={movies}
-          currentMovieIndex={currentMovieIndex} 
+          currentMovieIndex={currentMovieIndex}
           onSwipeLeft={handleSwipeLeft}
           onSwipeRight={handleSwipeRight}
         />
       </animated.div>
-
-
     </main>
   );
 }
-
 
 //touch and mouse events, pointer events

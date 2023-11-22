@@ -11,8 +11,8 @@
     border-radius: 4px;
     padding: 0 1rem 3rem 1rem;
     position: absolute;
-    top: 10;
-    &.swipe-out-left {
+    padding-bottom: 10rem;
+        &.swipe-out-left {
         animation: swipe-out-left 1s ease-out;
     }
     &.swipe-out-right {

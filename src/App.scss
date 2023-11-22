@@ -3,9 +3,10 @@
 
 .App {
   text-align: center;
-  // height: 100vh;
+  height: 100vh;
   background-color: black;
-  min-height: calc(100vh - 5rem);
+  // min-height: calc(100vh - 5rem);
   max-width: $max-width;
+  overflow: scroll;
 }
 
