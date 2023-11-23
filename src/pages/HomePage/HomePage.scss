@@ -5,3 +5,17 @@
     background-color: black;
     max-width: $max-width;
 }
+
+.match-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #4caf50; /* Green background color */
+    color: white; /* White text color */
+    padding: 16px; /* Padding */
+    border: none; /* Remove border */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    z-index: 1; /* Specify a stack order */
+  }

@@ -14,21 +14,26 @@ export default function HomePage() {
   const [swipeData, setSwipeData] = useState(null);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const storedIndex = localStorage.getItem("currentMovieIndex", currentMovieIndex +1);
+    setCurrentMovieIndex(storedIndex !== null ? parseInt(storedIndex, 10) : 0);
+  }, []);
+
   const handleSwipeLeft = (eventData) => {
-    setCurrentMovieIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
+    setCurrentMovieIndex((prevIndex) => (prevIndex < prevIndex - 1 ? prevIndex + 1 : prevIndex));
     setSwipeData(eventData);
   };
 
-
-
-
-
   const handleSwipeRight = async () => {
     try {
+
       console.log("current movie index:", currentMovieIndex);
-   
       console.log("movies:", movies);
+
+      
       const currentMovie = movies[currentMovieIndex];
+
+      localStorage.setItem("currentMovieIndex", currentMovieIndex + 1);
 
       await axios.post(`${process.env.REACT_APP_BASE_URL}/api/likes`, {
         userId: "2", // Replace with the actual user ID
@@ -50,7 +55,6 @@ export default function HomePage() {
           voteAverage: currentMovie.vote_average,
         },
       ]);
-   
     } catch (error) {
       console.error(error);
     }
@@ -98,9 +102,3 @@ export default function HomePage() {
   );
 }
 //touch and mouse events, pointer events
-
-
-
-
-
-

@@ -7,9 +7,9 @@ export default function MovieCard({ movies, onSwipeLeft, onSwipeRight, currentMo
 
 
   const swipeHandlers = useSwipeable({
-    onSwipedLeft: () => {
+    onSwipedLeft: async () => {
       setSwipeDirection("left");
-      onSwipeLeft([...movies]);
+      await onSwipeLeft(currentMovie);
       moveToNextMovie();
     }, 
     onSwipedRight: async () => {
