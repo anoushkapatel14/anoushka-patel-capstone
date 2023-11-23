@@ -1,19 +1,17 @@
 import { useEffect, useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import "./MovieCard.scss";
-export default function MovieCard({ movies, onSwipeLeft, onSwipeRight }) {
-  const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
+export default function MovieCard({ movies, onSwipeLeft, onSwipeRight, currentMovieIndex, setCurrentMovieIndex }) {
   const [swipeDirection, setSwipeDirection] = useState(null);
   const baseImageUrl = "https://image.tmdb.org/t/p/w500/";
-  useEffect(() => {
-    setCurrentMovieIndex(0);
-  }, [movies]);
+
+
   const swipeHandlers = useSwipeable({
     onSwipedLeft: () => {
       setSwipeDirection("left");
       onSwipeLeft([...movies]);
       moveToNextMovie();
-    }, //check
+    }, 
     onSwipedRight: async () => {
       setSwipeDirection("right");
       await onSwipeRight(currentMovie);

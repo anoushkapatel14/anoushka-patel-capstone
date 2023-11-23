@@ -13,37 +13,23 @@ export default function HomePage() {
   const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
   const [swipeData, setSwipeData] = useState(null);
   const navigate = useNavigate();
-  // console.log(movies);
+
   const handleSwipeLeft = (eventData) => {
     setCurrentMovieIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
     setSwipeData(eventData);
   };
-  useEffect(() => {
-    if (swipeData) {
-    }
-    setMovies((prevMovies) => {
-      const updatedMovies = prevMovies.slice(1);
-      // console.log("updated movies:", updatedMovies);
-      return updatedMovies;
-    });
-  }, [currentMovieIndex, swipeData]);
+
+
+
+
+
   const handleSwipeRight = async () => {
     try {
-      let newIndex = currentMovieIndex;
       console.log("current movie index:", currentMovieIndex);
-      if (currentMovieIndex < movies.length - 1) {
-        newIndex = currentMovieIndex + 0;
-        console.log("new index:", newIndex);
-      } else {
-        newIndex = 0;
-      }
-      setCurrentMovieIndex(newIndex);
-      // console.log("new index:", newIndex);
+   
       console.log("movies:", movies);
-      const currentMovie = movies[newIndex];
-      // console.log("current movie:", currentMovie);
-      // console.log("current movie index:", currentMovieIndex);
-      // console.log("SWPIED");
+      const currentMovie = movies[currentMovieIndex];
+
       await axios.post(`${process.env.REACT_APP_BASE_URL}/api/likes`, {
         userId: "2", // Replace with the actual user ID
         movieId: currentMovie.id,
@@ -64,21 +50,15 @@ export default function HomePage() {
           voteAverage: currentMovie.vote_average,
         },
       ]);
-      setMovies((prevMovies) => {
-        const updatedMovies = prevMovies.slice(1);
-        return updatedMovies;
-      });
+   
     } catch (error) {
       console.error(error);
     }
   };
   const swipeHandlers = useSwipeable({
     onSwiped: (eventData) => {
-      // console.log("Swipe Event Data:", eventData);
       if (eventData.dir === "Left") {
-        // handleSwipeLeft(eventData);
       } else if (eventData.dir === "Right") {
-        // handleSwipeRight(eventData);
       }
     },
     swipeDuration: 250,
@@ -109,6 +89,7 @@ export default function HomePage() {
         <MovieCard
           movies={movies}
           currentMovieIndex={currentMovieIndex}
+          setCurrentMovieIndex={setCurrentMovieIndex}
           onSwipeLeft={handleSwipeLeft}
           onSwipeRight={handleSwipeRight}
         />
