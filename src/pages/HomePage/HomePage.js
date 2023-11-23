@@ -11,34 +11,39 @@ export default function HomePage() {
   const [isError, setIsError] = useState(false);
   const [matches, setMatches] = useState([]);
   const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
-
+  const [swipeData, setSwipeData] = useState(null);
   const navigate = useNavigate();
-
   // console.log(movies);
-
   const handleSwipeLeft = (eventData) => {
-    setMovies((prevMovies) => {
-      // const updatedMovies = prevMovies.filter((movie, index) => index !== currentMovieIndex);
-      setCurrentMovieIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
-      console.log("Swiped Left", eventData);
-
-      return prevMovies;
-    });
+    setCurrentMovieIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
+    setSwipeData(eventData);
   };
-
+  useEffect(() => {
+    if (swipeData) {
+    }
+    setMovies((prevMovies) => {
+      const updatedMovies = prevMovies.slice(1);
+      // console.log("updated movies:", updatedMovies);
+      return updatedMovies;
+    });
+  }, [currentMovieIndex, swipeData]);
   const handleSwipeRight = async () => {
     try {
-      const currentMovie = movies[currentMovieIndex];
-      console.log("current movie:", currentMovie);
+      let newIndex = currentMovieIndex;
       console.log("current movie index:", currentMovieIndex);
-      console.log("SWPIED");
-
-      // setCurrentMovieIndex (currentMovieIndex + 1)
-
-      setCurrentMovieIndex((prevIndex) =>
-        prevIndex < movies.length - 1 ? prevIndex + 1 : 0
-      );
-
+      if (currentMovieIndex < movies.length - 1) {
+        newIndex = currentMovieIndex + 0;
+        console.log("new index:", newIndex);
+      } else {
+        newIndex = 0;
+      }
+      setCurrentMovieIndex(newIndex);
+      // console.log("new index:", newIndex);
+      console.log("movies:", movies);
+      const currentMovie = movies[newIndex];
+      // console.log("current movie:", currentMovie);
+      // console.log("current movie index:", currentMovieIndex);
+      // console.log("SWPIED");
       await axios.post(`${process.env.REACT_APP_BASE_URL}/api/likes`, {
         userId: "2", // Replace with the actual user ID
         movieId: currentMovie.id,
@@ -48,7 +53,6 @@ export default function HomePage() {
         release_date: currentMovie.release_date,
         vote_average: currentMovie.vote_average,
       });
-
       setMatches((prevMatches) => [
         ...prevMatches,
         {
@@ -60,24 +64,25 @@ export default function HomePage() {
           voteAverage: currentMovie.vote_average,
         },
       ]);
+      setMovies((prevMovies) => {
+        const updatedMovies = prevMovies.slice(1);
+        return updatedMovies;
+      });
     } catch (error) {
       console.error(error);
     }
   };
-
   const swipeHandlers = useSwipeable({
     onSwiped: (eventData) => {
-      console.log("Swipe Event Data:", eventData);
-
+      // console.log("Swipe Event Data:", eventData);
       if (eventData.dir === "Left") {
-        handleSwipeLeft(eventData);
+        // handleSwipeLeft(eventData);
       } else if (eventData.dir === "Right") {
         // handleSwipeRight(eventData);
       }
     },
     swipeDuration: 250,
   });
-
   useEffect(() => {
     const getMovies = async () => {
       try {
@@ -92,9 +97,7 @@ export default function HomePage() {
     };
     getMovies();
   }, []);
-
   const [{ x }, set] = useSpring(() => ({ x: 0 }));
-
   return (
     <main className="main">
       <animated.div
@@ -113,5 +116,10 @@ export default function HomePage() {
     </main>
   );
 }
-
 //touch and mouse events, pointer events
+
+
+
+
+
+

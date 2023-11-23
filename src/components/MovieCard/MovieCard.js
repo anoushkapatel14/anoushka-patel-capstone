@@ -1,42 +1,32 @@
 import { useEffect, useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import "./MovieCard.scss";
-
 export default function MovieCard({ movies, onSwipeLeft, onSwipeRight }) {
   const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
   const [swipeDirection, setSwipeDirection] = useState(null);
-
   const baseImageUrl = "https://image.tmdb.org/t/p/w500/";
-
   useEffect(() => {
     setCurrentMovieIndex(0);
   }, [movies]);
-
   const swipeHandlers = useSwipeable({
     onSwipedLeft: () => {
-      console.log("Swiped Left");
       setSwipeDirection("left");
       onSwipeLeft([...movies]);
       moveToNextMovie();
-    },
-
-    onSwipedRight: () => {
-      console.log("Swiped Right");
+    }, //check
+    onSwipedRight: async () => {
       setSwipeDirection("right");
-      onSwipeRight(currentMovie);
+      await onSwipeRight(currentMovie);
       moveToNextMovie();
     },
   });
-
   const moveToNextMovie = () => {
     setCurrentMovieIndex((prevIndex) => prevIndex + 1);
-
     // Reset swipe direction after the animation duration
     setTimeout(() => {
       setSwipeDirection(null);
     }, 1000); // Adjust this value to match your animation duration
   };
-
   const getAnimationClass = () => {
     return swipeDirection === "left"
       ? "swipe-out-left"
@@ -44,16 +34,13 @@ export default function MovieCard({ movies, onSwipeLeft, onSwipeRight }) {
       ? "swipe-out-right"
       : "";
   };
-
-  if (movies.length === 0) {
+  if (!movies || movies.length === 0) {
     return <p>No movies available</p>;
   }
-
   const currentMovie = movies[currentMovieIndex];
   if (!currentMovie) {
     return <p>No more movies to display</p>;
   }
-
   return (
     <div
       className={`movie-card-container ${getAnimationClass()}`}
@@ -77,13 +64,11 @@ export default function MovieCard({ movies, onSwipeLeft, onSwipeRight }) {
           Rating: {currentMovie.vote_average}
         </p>
       </div>
-
-      {currentMovieIndex < movies.length - 1 && (
+      {movies?.[currentMovieIndex + 1] && (
         <div
           key={movies[currentMovieIndex + 1].id}
           className={`movie-card ${getAnimationClass()}`}
         ></div>
       )}
     </div>
-  );
-}
+  );}
