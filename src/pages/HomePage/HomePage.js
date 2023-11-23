@@ -12,6 +12,8 @@ export default function HomePage() {
   const [matches, setMatches] = useState([]);
   const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
   const [swipeData, setSwipeData] = useState(null);
+  const [showMatchPopup, setShowMatchPopup] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,7 +37,7 @@ export default function HomePage() {
 
       localStorage.setItem("currentMovieIndex", currentMovieIndex + 1);
 
-      await axios.post(`${process.env.REACT_APP_BASE_URL}/api/likes`, {
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/likes`, {
         userId: "2", // Replace with the actual user ID
         movieId: currentMovie.id,
         title: currentMovie.title,
@@ -44,6 +46,8 @@ export default function HomePage() {
         release_date: currentMovie.release_date,
         vote_average: currentMovie.vote_average,
       });
+      if (response.status === 201) {
+
       setMatches((prevMatches) => [
         ...prevMatches,
         {
@@ -55,6 +59,8 @@ export default function HomePage() {
           voteAverage: currentMovie.vote_average,
         },
       ]);
+      setShowMatchPopup(true);
+    }
     } catch (error) {
       console.error(error);
     }
@@ -84,6 +90,12 @@ export default function HomePage() {
   const [{ x }, set] = useSpring(() => ({ x: 0 }));
   return (
     <main className="main">
+       {showMatchPopup && (
+     <div className="match-popup">
+       <h2>Match found!</h2>
+       <button onClick={() => setShowMatchPopup(false)}>Close</button>
+     </div>
+   )}
       <animated.div
         {...swipeHandlers}
         style={{
