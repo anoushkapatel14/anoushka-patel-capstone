@@ -49,7 +49,7 @@ function Signup() {
       </form>
 
       <p>
-        Have an account? <Link to="/login">Log in</Link>
+        Already have an account? <Link to="/login">Log in</Link>
       </p>
     </main>
   );

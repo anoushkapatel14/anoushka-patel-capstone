@@ -7,18 +7,22 @@ import FooterNav from "./components/FooterNav/FooterNav";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import Login from "./pages/LoginPage/LoginPage";
 import Signup from "./pages/SignupPage/SignupPage";
+import { useState } from "react";
 
 export default function App() {
+  const [name, setName] = useState(null);
+  const [data, setData] = useState(null);
+
   return (
     <BrowserRouter>
-      <Header />
+      <Header name={name} data={data} setData={setData} />
       <div className="App">
         <Routes>
-          <Route path="profile" element={<DashboardPage />} />
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<DashboardPage data={data} setData={setData} />} />
+          <Route path="/movies" element={<HomePage />} />
           <Route path="home" element={<Navigate to="/" />} />
           <Route path="matches" element={<MatchesPage />} />
-          <Route path="login" element={<Login />} />
+          <Route path="login" element={<Login setName={setName} />} />
           <Route path="signup" element={<Signup />} />
         </Routes>
       </div>

@@ -1,7 +1,15 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-.login-page{
-    background-color: red;
-    margin-top: 8rem;
+.login-page {
+ @include login-signup-card;
+}
+
+.login {
+
+    &__button {
+        @include login-btn;
+        background-color: white;
+    }
+
 }

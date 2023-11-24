@@ -2,15 +2,18 @@ import "./DashboardPage.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import dashboardLogo from "../../assets/images/dashboardLogo.png";
 
-export default function Dashboard() {
+export default function Dashboard({ data, setData }) {
   const [failedAuth, setFailedAuth] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState(null);
+  //   const [data, setData] = useState(null);
   const navigate = useNavigate();
 
   const logout = () => {
     sessionStorage.removeItem("token");
+    setData(null);
     navigate("/login");
   };
 
@@ -25,8 +28,10 @@ export default function Dashboard() {
       });
 
       setData(response.data);
+      setIsLoading(false);
     } catch (error) {
       setFailedAuth(true);
+      setIsLoading(false);
       console.error(error);
     }
 
@@ -46,15 +51,46 @@ export default function Dashboard() {
   }
 
   return (
-    <main className="dashboard">
-      <h1>My Profile</h1>
-      <p>Welcome back, {data.first_name}</p>
+    <main className="main">
+       
+      <div className="dashboard-img-div">
+            <img
+          className="dashboard-img-div__logo"
+          src={dashboardLogo}
+          alt="large youchoose logo"
+             />
+      </div>
 
+      
+      <article className="dashboard-card">
+        <h1 className="dashboard-card__welcome">
+          Welcome back, {data.first_name}!
+        </h1>
+        <button className="dashboard-card__btn" onClick={logout}>
+          Log out
+        </button>
+      </article>
 
+      <article className="dashboard-info">
+        {data ? (
+          <>
+            <h2 className="dashboard-info__title">How YouChoose Works:</h2>
+            <p className="dashboard-info__description">
+              Swipe right on films you want to watch, and left on films you
+              don't want to watch. If you and another user both swipe right, you
+              get a match!
+            </p>
+          </>
+        ) : (
+          <p>login pls</p>
+        )}
+      </article>
 
-      <button onClick={logout}>Log out</button>
+      <article className="dashboard-nav">
+        <Link to="/movies" className="dashboard-nav__link">
+          Click here to get started
+        </Link>
+      </article>
     </main>
   );
 }
-
-

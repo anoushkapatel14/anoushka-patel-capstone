@@ -1,9 +1,11 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-.main {
+.swipe-main {
     background-color: black;
     max-width: $max-width;
+    margin-top: 8rem;
+    margin-bottom: 15rem;
 }
 
 .match-popup {

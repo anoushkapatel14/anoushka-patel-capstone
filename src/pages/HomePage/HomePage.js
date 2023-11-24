@@ -89,7 +89,7 @@ export default function HomePage() {
   }, []);
   const [{ x }, set] = useSpring(() => ({ x: 0 }));
   return (
-    <main className="main">
+    <main className="swipe-main">
       
        {showMatchPopup && (
      <div className="match-popup">

@@ -16,16 +16,66 @@
   width: 40%;
   align-items: center;
   margin: 1rem;
+  border-radius: 4px;
 
   
   &__title {
-    font-weight: 500;
+    font-weight: 600;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+    font-size: 1.3rem;
   }
 
   &__img {
     width: 7rem;
     padding-bottom: 1.5rem;
+    border-radius: 4px;
   }
 }
+
+.watched-toggle {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  justify-content: center;
+
+  &__text {
+    font-weight: 500;
+    font-size: 1rem;
+    color: navy;
+  }
+}
+
+input[type="checkbox"] {
+  width: 40px;
+  height: 20px;
+  background-color: #e0e0e0;
+  border-radius: 15px;
+  position: relative;
+  cursor: pointer;
+  appearance: none;
+  outline: none;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #4caf50;
+}
+
+input[type="checkbox"]:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+input[type="checkbox"]:checked:before {
+  transform: translateX(25px);
+}
+

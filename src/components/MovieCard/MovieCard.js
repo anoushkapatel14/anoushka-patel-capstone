@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import "./MovieCard.scss";
+
 export default function MovieCard({ movies, onSwipeLeft, onSwipeRight, currentMovieIndex, setCurrentMovieIndex }) {
   const [swipeDirection, setSwipeDirection] = useState(null);
   const baseImageUrl = "https://image.tmdb.org/t/p/w500/";
@@ -47,6 +48,14 @@ export default function MovieCard({ movies, onSwipeLeft, onSwipeRight, currentMo
   if (!currentMovie) {
     return <p>No more movies to display</p>;
   }
+
+  const formattedReleaseDate = new Date(currentMovie.release_date).toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'numeric',
+    year: 'numeric',
+  });
+
+
   return (
     <div
       className={`movie-card-container ${getAnimationClass()}`}
@@ -64,7 +73,7 @@ export default function MovieCard({ movies, onSwipeLeft, onSwipeRight, currentMo
         />
         <p className="movie-card__overview">{currentMovie.overview}</p>
         <p className="movie-card__date">
-          Release date: {currentMovie.release_date}
+          Release date: {formattedReleaseDate}
         </p>
         <p className="movie-card__rating">
           Rating: {currentMovie.vote_average}

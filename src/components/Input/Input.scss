@@ -1,0 +1,19 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.field {
+
+    &__label {
+        font-weight: 500;
+    }
+
+    &__input {
+        border-radius: 4px;
+        border: none;
+        margin-bottom: 1rem;
+        padding: 0.5rem;
+        margin-left: 0.5rem;
+        font-weight: 400;
+        font-size: 1rem;
+    }
+}

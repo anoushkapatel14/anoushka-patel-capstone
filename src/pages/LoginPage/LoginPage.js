@@ -4,10 +4,9 @@ import { useState } from "react";
 import Input from "../../components/Input/Input";
 import { useNavigate, Link } from "react-router-dom";
 
-export default function Login() {
+export default function Login( {setName}) {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
-  const [name, setName] = useState(null);
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -21,13 +20,12 @@ export default function Login() {
 
       sessionStorage.setItem("token", response.data.token);
       setName(response.data.name);
-      
+
       setSuccess(true);
 
       setTimeout(() => {
         navigate("/");
-      }, 2000);
-
+      }, 1000);
     } catch (error) {
       console.error(error);
       setError(error.response.data);
@@ -38,12 +36,16 @@ export default function Login() {
     <main className="login-page">
       <form className="login" onSubmit={handleSubmit}>
         <h1 className="login__title">Log in</h1>
-        <Input type="text" name="email" label="Email" />
+
+        <Input
+          type="text"
+          name="email"
+          label="Email"
+        />
         <Input type="password" name="password" label="Password" />
         <button className="login__button">Log in</button>
         {error && <div className="login__message">{error}</div>}
-        {success && <div className="login__message">Login successful, taking you to your movie choices</div>} 
-
+        {success && <div className="login__message">Login successful</div>}
       </form>
 
       <p>
@@ -52,4 +54,3 @@ export default function Login() {
     </main>
   );
 }
-

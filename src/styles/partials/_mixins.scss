@@ -1,1 +1,22 @@
 @use "./variables" as *;
+
+@mixin btn {
+    box-shadow:2px 2px 2px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 2px;
+    
+}
+
+@mixin login-btn {
+    background-color: $blue;
+    border: none;
+    font-size: 1rem;
+    box-shadow:2px 2px 2px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 2px;
+}
+
+@mixin login-signup-card {
+    background-color: $blue;
+    padding: $wrapper-padding;
+    margin: 8rem 1rem 2rem 1rem;
+    border-radius: 4px;
+}

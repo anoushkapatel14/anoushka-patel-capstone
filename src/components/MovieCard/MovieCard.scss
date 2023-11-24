@@ -3,15 +3,12 @@
 
 .movie-card-container {
     border: 2px solid black;
-    margin-top: 8rem;
     margin-left: 2rem;
     margin-right: 2rem;
     background-color: $blue;
     color: $white;
-    border-radius: 4px;
+    border-radius: $border-radius;
     padding: 0 1rem 3rem 1rem;
-    position: absolute;
-    padding-bottom: 10rem;
         &.swipe-out-left {
         animation: swipe-out-left 1s ease-out;
     }
@@ -28,6 +25,7 @@
     }
     &__img {
         height: 15rem;
+        border-radius: $border-radius;
     }
 }
 
