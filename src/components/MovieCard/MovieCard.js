@@ -10,12 +10,18 @@ export default function MovieCard({ movies, onSwipeLeft, onSwipeRight, currentMo
     onSwipedLeft: async () => {
       setSwipeDirection("left");
       await onSwipeLeft(currentMovie);
+
+      setTimeout(() => {
       moveToNextMovie();
+    }, 1000);
     }, 
     onSwipedRight: async () => {
       setSwipeDirection("right");
       await onSwipeRight(currentMovie);
-      moveToNextMovie();
+
+      setTimeout(() => {
+        moveToNextMovie();
+      }, 1000);
     },
   });
   const moveToNextMovie = () => {
@@ -25,6 +31,8 @@ export default function MovieCard({ movies, onSwipeLeft, onSwipeRight, currentMo
       setSwipeDirection(null);
     }, 1000); // Adjust this value to match your animation duration
   };
+
+  
   const getAnimationClass = () => {
     return swipeDirection === "left"
       ? "swipe-out-left"
