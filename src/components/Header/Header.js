@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/images/youchoose-logo.png";
 import login from "../../assets/images/login-icon.png";
 import heart from "../../assets/images/heart.png";
+import { useState } from "react";
 
 export default function Header() {
+  const [name, setName] = useState(null);
+
   return (
     <header className="header">
       <div className="header__div">
@@ -23,7 +26,7 @@ export default function Header() {
           <Link to="/login">
             <img className="header__login" src={login} alt="login icon" />
           </Link>
-            <p className="header__text">Log in</p>
+            <p className="header__text">{name || "Log in"}</p>
         </div>
       </div>
     </header>

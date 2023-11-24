@@ -7,6 +7,7 @@ import { useNavigate, Link } from "react-router-dom";
 export default function Login() {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
+  const [name, setName] = useState(null);
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -19,6 +20,7 @@ export default function Login() {
       });
 
       sessionStorage.setItem("token", response.data.token);
+      setName(response.data.name);
       
       setSuccess(true);
 
