@@ -27,7 +27,6 @@
 .watched-toggle {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
   justify-content: center;
 
   &__text {
@@ -68,4 +67,8 @@ input[type="checkbox"]:before {
 
 input[type="checkbox"]:checked:before {
   transform: translateX(25px);
+}
+
+.star-rating {
+margin-bottom: 1rem;
 }

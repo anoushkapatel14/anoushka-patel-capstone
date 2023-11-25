@@ -24,7 +24,7 @@ export default function Login( {setName}) {
       setSuccess(true);
 
       setTimeout(() => {
-        navigate("/");
+        navigate("/dashboard");
       }, 1000);
     } catch (error) {
       console.error(error);

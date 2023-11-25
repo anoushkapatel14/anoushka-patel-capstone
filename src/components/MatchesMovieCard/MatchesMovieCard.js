@@ -3,10 +3,18 @@ import "./MatchesMovieCard.scss";
 import axios from "axios";
 import MovieDetailsPopup from "../MovieDetailsPopup/MovieDetailsPopup";
 import { Link } from "react-router-dom";
+import { Rating, RoundedStar } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
 
 export default function MatchesMovieCard({ match, movies }) {
   const [matches, setMatches] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
+
+  const [rating, setRating] = useState(() => {
+    const storedRatings = localStorage.getItem("ratings");
+    return storedRatings ? JSON.parse(storedRatings) : {};
+  });
+
   const [watched, setWatched] = useState(() => {
     const storedWatched = localStorage.getItem("watched");
     return storedWatched ? JSON.parse(storedWatched) : {};
@@ -19,6 +27,13 @@ export default function MatchesMovieCard({ match, movies }) {
   const closePopup = () => {
     setSelectedMovie(null);
   };
+
+  const myStyles = {
+    itemShapes: RoundedStar,
+    activeFillColor: '#ffb700',
+    inactiveFillColor: '#fbf1a9'
+  }
+
 
   const baseImageUrl = "https://image.tmdb.org/t/p/w500/";
 
@@ -38,11 +53,15 @@ export default function MatchesMovieCard({ match, movies }) {
     fetchMatches();
   }, [match]);
 
-  // Save watched movies to localStorage whenever the watched state changes
   useEffect(() => {
     localStorage.setItem("watched", JSON.stringify(watched));
     console.log("Saved watched:", watched);
   }, [watched]);
+
+  useEffect(() => {
+    localStorage.setItem("ratings", JSON.stringify(rating));
+    console.log("Saved ratings:", rating);
+  }, [rating]);
 
   return (
     <>
@@ -69,6 +88,19 @@ export default function MatchesMovieCard({ match, movies }) {
                 setWatched(newWatched);
               }}
             />
+          </div>
+          <div className="star-rating">
+          <Rating
+            style={{ maxWidth: 150 }}
+            itemStyles={myStyles} 
+            value={rating[match.id] || 0}
+            onChange={(newRating) => {
+              const newRatings = { ...rating, [match.id]: newRating };
+              console.log("New ratings state:", newRatings);
+
+              setRating(newRatings);
+            }}
+          />
           </div>
         </article>
       ))}
