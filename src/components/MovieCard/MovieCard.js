@@ -2,10 +2,15 @@ import { useEffect, useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import "./MovieCard.scss";
 
-export default function MovieCard({ movies, onSwipeLeft, onSwipeRight, currentMovieIndex, setCurrentMovieIndex }) {
+export default function MovieCard({
+  movies,
+  onSwipeLeft,
+  onSwipeRight,
+  currentMovieIndex,
+  setCurrentMovieIndex,
+}) {
   const [swipeDirection, setSwipeDirection] = useState(null);
   const baseImageUrl = "https://image.tmdb.org/t/p/w500/";
-
 
   const swipeHandlers = useSwipeable({
     onSwipedLeft: async () => {
@@ -13,9 +18,9 @@ export default function MovieCard({ movies, onSwipeLeft, onSwipeRight, currentMo
       await onSwipeLeft(currentMovie);
 
       setTimeout(() => {
-      moveToNextMovie();
-    }, 1000);
-    }, 
+        moveToNextMovie();
+      }, 1000);
+    },
     onSwipedRight: async () => {
       setSwipeDirection("right");
       await onSwipeRight(currentMovie);
@@ -27,13 +32,11 @@ export default function MovieCard({ movies, onSwipeLeft, onSwipeRight, currentMo
   });
   const moveToNextMovie = () => {
     setCurrentMovieIndex((prevIndex) => prevIndex + 1);
-    // Reset swipe direction after the animation duration
     setTimeout(() => {
       setSwipeDirection(null);
-    }, 1000); // Adjust this value to match your animation duration
+    }, 1000);
   };
 
-  
   const getAnimationClass = () => {
     return swipeDirection === "left"
       ? "swipe-out-left"
@@ -49,12 +52,13 @@ export default function MovieCard({ movies, onSwipeLeft, onSwipeRight, currentMo
     return <p>No more movies to display</p>;
   }
 
-  const formattedReleaseDate = new Date(currentMovie.release_date).toLocaleDateString('en-GB', {
-    day: 'numeric',
-    month: 'numeric',
-    year: 'numeric',
+  const formattedReleaseDate = new Date(
+    currentMovie.release_date
+  ).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "numeric",
+    year: "numeric",
   });
-
 
   return (
     <div
@@ -72,9 +76,7 @@ export default function MovieCard({ movies, onSwipeLeft, onSwipeRight, currentMo
           alt={currentMovie.title}
         />
         <p className="movie-card__overview">{currentMovie.overview}</p>
-        <p className="movie-card__date">
-          Release date: {formattedReleaseDate}
-        </p>
+        <p className="movie-card__date">Release date: {formattedReleaseDate}</p>
         <p className="movie-card__rating">
           Rating: {currentMovie.vote_average}
         </p>
@@ -86,4 +88,5 @@ export default function MovieCard({ movies, onSwipeLeft, onSwipeRight, currentMo
         ></div>
       )}
     </div>
-  );}
+  );
+}

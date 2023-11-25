@@ -10,7 +10,7 @@ export default function Header({ name, data, setData }) {
   return (
     <header className="header">
       <div className="header__div">
-        <Link to="/movies">
+        <Link to="/dashboard">
           <img className="header__logo" src={logo} alt="youchoose logo" />
         </Link>
 

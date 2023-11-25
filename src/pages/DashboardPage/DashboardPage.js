@@ -8,7 +8,6 @@ import dashboardLogo from "../../assets/images/dashboardLogo.png";
 export default function Dashboard({ data, setData }) {
   const [failedAuth, setFailedAuth] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  //   const [data, setData] = useState(null);
   const navigate = useNavigate();
 
   const logout = () => {
@@ -52,16 +51,14 @@ export default function Dashboard({ data, setData }) {
 
   return (
     <main className="main">
-       
       <div className="dashboard-img-div">
-            <img
+        <img
           className="dashboard-img-div__logo"
           src={dashboardLogo}
           alt="large youchoose logo"
-             />
+        />
       </div>
 
-      
       <article className="dashboard-card">
         <h1 className="dashboard-card__welcome">
           Welcome back, {data.first_name}!
@@ -82,7 +79,7 @@ export default function Dashboard({ data, setData }) {
             </p>
           </>
         ) : (
-          <p>login pls</p>
+          <p>Please log in</p>
         )}
       </article>
 

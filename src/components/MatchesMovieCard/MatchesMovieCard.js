@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import "./MatchesMovieCard.scss";
 import axios from "axios";
 import MovieDetailsPopup from "../MovieDetailsPopup/MovieDetailsPopup";
-import { Link } from "react-router-dom";
 import { Rating, RoundedStar } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 
@@ -30,10 +29,9 @@ export default function MatchesMovieCard({ match, movies }) {
 
   const myStyles = {
     itemShapes: RoundedStar,
-    activeFillColor: '#ffb700',
-    inactiveFillColor: '#fbf1a9'
-  }
-
+    activeFillColor: "#ffd700",
+    inactiveFillColor: "#f7f2e7",
+  };
 
   const baseImageUrl = "https://image.tmdb.org/t/p/w500/";
 
@@ -90,17 +88,17 @@ export default function MatchesMovieCard({ match, movies }) {
             />
           </div>
           <div className="star-rating">
-          <Rating
-            style={{ maxWidth: 150 }}
-            itemStyles={myStyles} 
-            value={rating[match.id] || 0}
-            onChange={(newRating) => {
-              const newRatings = { ...rating, [match.id]: newRating };
-              console.log("New ratings state:", newRatings);
+            <Rating
+              style={{ maxWidth: 150 }}
+              itemStyles={myStyles}
+              value={rating[match.id] || 0}
+              onChange={(newRating) => {
+                const newRatings = { ...rating, [match.id]: newRating };
+                console.log("New ratings state:", newRatings);
 
-              setRating(newRatings);
-            }}
-          />
+                setRating(newRatings);
+              }}
+            />
           </div>
         </article>
       ))}

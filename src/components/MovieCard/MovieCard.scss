@@ -2,31 +2,31 @@
 @use "../../styles/partials/mixins" as *;
 
 .movie-card-container {
-    border: 2px solid black;
-    margin-left: 2rem;
-    margin-right: 2rem;
-    background-color: $blue;
-    color: $white;
-    border-radius: $border-radius;
-    padding: 0 1rem 3rem 1rem;
-        &.swipe-out-left {
-        animation: swipe-out-left 1s ease-out;
-    }
-    &.swipe-out-right {
-        animation: swipe-out-right 1s ease-out;
-    }
+  border: 2px solid $navy;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  background-color: $blue;
+  color: $navy;
+  border-radius: $border-radius;
+  padding: 0 1rem 3rem 1rem;
+  &.swipe-out-left {
+    animation: swipe-out-left 1s ease-out;
+  }
+  &.swipe-out-right {
+    animation: swipe-out-right 1s ease-out;
+  }
 }
 
 .movie-card {
-    &__title {
-        font-weight: 600;
-        text-decoration: underline;
-        font-size: 2rem;
-    }
-    &__img {
-        height: 15rem;
-        border-radius: $border-radius;
-    }
+  &__title {
+    font-weight: 600;
+    text-decoration: underline;
+    font-size: 2rem;
+  }
+  &__img {
+    height: 15rem;
+    border-radius: $border-radius;
+  }
 }
 
 @keyframes swipe-out-left {

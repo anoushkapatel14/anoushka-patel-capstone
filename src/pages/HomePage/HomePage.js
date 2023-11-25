@@ -17,50 +17,55 @@ export default function HomePage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedIndex = localStorage.getItem("currentMovieIndex", currentMovieIndex +1);
+    const storedIndex = localStorage.getItem(
+      "currentMovieIndex",
+      currentMovieIndex + 1
+    );
     setCurrentMovieIndex(storedIndex !== null ? parseInt(storedIndex, 10) : 0);
   }, []);
 
   const handleSwipeLeft = (eventData) => {
-    setCurrentMovieIndex((prevIndex) => (prevIndex < prevIndex - 1 ? prevIndex + 1 : prevIndex));
+    setCurrentMovieIndex((prevIndex) =>
+      prevIndex < prevIndex - 1 ? prevIndex + 1 : prevIndex
+    );
     setSwipeData(eventData);
   };
 
   const handleSwipeRight = async () => {
     try {
-
       console.log("current movie index:", currentMovieIndex);
       console.log("movies:", movies);
 
-      
       const currentMovie = movies[currentMovieIndex];
 
       localStorage.setItem("currentMovieIndex", currentMovieIndex + 1);
 
-      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/likes`, {
-        userId: "2", // Replace with the actual user ID
-        movieId: currentMovie.id,
-        title: currentMovie.title,
-        poster_path: currentMovie.poster_path,
-        overview: currentMovie.overview,
-        release_date: currentMovie.release_date,
-        vote_average: currentMovie.vote_average,
-      });
-      if (response.status === 201) {
-
-      setMatches((prevMatches) => [
-        ...prevMatches,
+      const response = await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/api/likes`,
         {
-          id: currentMovie.id,
+          userId: "2",
+          movieId: currentMovie.id,
           title: currentMovie.title,
-          posterPath: currentMovie.poster_path,
+          poster_path: currentMovie.poster_path,
           overview: currentMovie.overview,
-          releaseDate: currentMovie.release_date,
-          voteAverage: currentMovie.vote_average,
-        },
-      ]);
-      setShowMatchPopup(true);
-    }
+          release_date: currentMovie.release_date,
+          vote_average: currentMovie.vote_average,
+        }
+      );
+      if (response.status === 201) {
+        setMatches((prevMatches) => [
+          ...prevMatches,
+          {
+            id: currentMovie.id,
+            title: currentMovie.title,
+            posterPath: currentMovie.poster_path,
+            overview: currentMovie.overview,
+            releaseDate: currentMovie.release_date,
+            voteAverage: currentMovie.vote_average,
+          },
+        ]);
+        setShowMatchPopup(true);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -90,13 +95,12 @@ export default function HomePage() {
   const [{ x }, set] = useSpring(() => ({ x: 0 }));
   return (
     <main className="swipe-main">
-      
-       {showMatchPopup && (
-     <div className="match-popup">
-       <h2>Match found!</h2>
-       <button onClick={() => setShowMatchPopup(false)}>Close</button>
-     </div>
-   )}
+      {showMatchPopup && (
+        <div className="match-popup">
+          <h2>Match found!</h2>
+          <button onClick={() => setShowMatchPopup(false)}>Close</button>
+        </div>
+      )}
       <animated.div
         {...swipeHandlers}
         style={{
@@ -114,4 +118,3 @@ export default function HomePage() {
     </main>
   );
 }
-//touch and mouse events, pointer events

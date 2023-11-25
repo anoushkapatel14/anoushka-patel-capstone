@@ -2,7 +2,7 @@
 @use "../../styles/partials/variables" as *;
 
 .match-card {
-  color: white;
+  color: $navy;
   display: flex;
   background-color: $blue;
   flex-direction: column;
@@ -32,14 +32,14 @@
   &__text {
     font-weight: 500;
     font-size: 1rem;
-    color: navy;
+    color: $navy;
   }
 }
 
 input[type="checkbox"] {
   width: 40px;
   height: 20px;
-  background-color: #e0e0e0;
+  background-color: #ecf0f1;
   border-radius: 15px;
   position: relative;
   cursor: pointer;
@@ -50,7 +50,7 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked {
-  background-color: #4caf50;
+  background-color: $green;
 }
 
 input[type="checkbox"]:before {
@@ -70,5 +70,5 @@ input[type="checkbox"]:checked:before {
 }
 
 .star-rating {
-margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }

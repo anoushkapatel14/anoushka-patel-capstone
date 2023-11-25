@@ -4,7 +4,7 @@ import { useState } from "react";
 import Input from "../../components/Input/Input";
 import { useNavigate, Link } from "react-router-dom";
 
-export default function Login( {setName}) {
+export default function Login({ setName }) {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
@@ -37,11 +37,7 @@ export default function Login( {setName}) {
       <form className="login" onSubmit={handleSubmit}>
         <h1 className="login__title">Log in</h1>
 
-        <Input
-          type="text"
-          name="email"
-          label="Email"
-        />
+        <Input type="text" name="email" label="Email" />
         <Input type="password" name="password" label="Password" />
         <button className="login__button">Log in</button>
         {error && <div className="login__message">{error}</div>}

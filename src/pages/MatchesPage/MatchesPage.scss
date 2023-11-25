@@ -10,6 +10,20 @@
     color: $white;
     text-decoration: underline;
   }
+
+  &__text-div {
+    padding: 1rem;
+    padding-top: 0;
+  }
+  &__click-text {
+    color: $white;
+    font-weight: 500;
+  }
+
+  &__rate-text {
+    color: $white;
+    font-weight: 500;
+  }
 }
 
 .matches-cards {

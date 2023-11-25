@@ -8,8 +8,7 @@ import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import Login from "./pages/LoginPage/LoginPage";
 import Signup from "./pages/SignupPage/SignupPage";
 import { useState } from "react";
-import { Rating } from '@smastrom/react-rating'
-import '@smastrom/react-rating/style.css'
+import "@smastrom/react-rating/style.css";
 
 export default function App() {
   const [name, setName] = useState(null);
@@ -20,7 +19,10 @@ export default function App() {
       <Header name={name} data={data} setData={setData} />
       <div className="App">
         <Routes>
-          <Route path="/dashboard" element={<DashboardPage data={data} setData={setData} />} />
+          <Route
+            path="/dashboard"
+            element={<DashboardPage data={data} setData={setData} />}
+          />
           <Route path="/movies" element={<HomePage />} />
           <Route path="home" element={<Navigate to="/" />} />
           <Route path="matches" element={<MatchesPage />} />

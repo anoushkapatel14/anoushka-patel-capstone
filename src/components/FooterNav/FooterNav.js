@@ -7,8 +7,7 @@ import { Link } from "react-router-dom";
 export default function FooterNav() {
   return (
     <footer className="footer">
-
-<div className="footer__icons-div">
+      <div className="footer__icons-div">
         <Link to="/movies">
           <img className="footer__icon" src={swipeIcon} alt="swiping icon" />
         </Link>
