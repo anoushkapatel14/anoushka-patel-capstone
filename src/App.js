@@ -13,6 +13,8 @@ import "@smastrom/react-rating/style.css";
 export default function App() {
   const [name, setName] = useState(null);
   const [data, setData] = useState(null);
+  const isLoggedIn = !!name; // Check if the user is logged in
+
 
   return (
     <BrowserRouter>
@@ -23,10 +25,10 @@ export default function App() {
             path="/dashboard"
             element={<DashboardPage data={data} setData={setData} />}
           />
+          <Route path="login" element={<Login setName={setName} />} />
           <Route path="/movies" element={<HomePage />} />
           <Route path="home" element={<Navigate to="/" />} />
           <Route path="matches" element={<MatchesPage />} />
-          <Route path="login" element={<Login setName={setName} />} />
           <Route path="/" element={<Signup />} />
         </Routes>
       </div>

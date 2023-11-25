@@ -20,4 +20,9 @@
   border-radius: 8px;
   font-size: 2rem;
   z-index: 1;
+
+  &__btn {
+    @include login-btn;
+    background-color: $white;
+  }
 }

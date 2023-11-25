@@ -98,7 +98,8 @@ export default function HomePage() {
       {showMatchPopup && (
         <div className="match-popup">
           <h2>Match found!</h2>
-          <button onClick={() => setShowMatchPopup(false)}>Close</button>
+          <button className="match-popup__btn"
+          onClick={() => setShowMatchPopup(false)}>Close</button>
         </div>
       )}
       <animated.div
