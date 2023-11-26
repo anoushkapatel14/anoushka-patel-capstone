@@ -6,7 +6,7 @@
   display: flex;
   background-color: $blue;
   flex-direction: column;
-  width: 43%;
+  width: 44%;
   align-items: center;
   margin: 0.5rem;
   border-radius: $border-radius;
@@ -19,7 +19,7 @@
   }
 
   &__img {
-    width: 7rem;
+    width: 8rem;
     border-radius: $border-radius;
   }
 }
