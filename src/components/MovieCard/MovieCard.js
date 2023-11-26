@@ -78,7 +78,7 @@ export default function MovieCard({
         <p className="movie-card__overview">{currentMovie.overview}</p>
         <p className="movie-card__date">Release date: {formattedReleaseDate}</p>
         <p className="movie-card__rating">
-          Rating: {currentMovie.vote_average}
+          Rating: {currentMovie.vote_average} /10
         </p>
       </div>
       {movies?.[currentMovieIndex + 1] && (
