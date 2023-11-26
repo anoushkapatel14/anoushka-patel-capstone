@@ -169,5 +169,8 @@ migrate:down: Rollback the latest migration.
 migrate:rollback: Rollback all completed migrations.
 seed: Run database seeds.
 
+### Notes:
+
+Please run in inspect mode as the swipe depends on the inspect mode on chrome dev tools emulating a mobile phone
 
 
