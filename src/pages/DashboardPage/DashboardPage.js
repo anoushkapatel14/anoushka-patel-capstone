@@ -42,11 +42,21 @@ export default function Dashboard({ data, setData }) {
   }, []);
 
   if (failedAuth) {
-    return <main className="dashboard">You must log in to see this page.</main>;
+    return (
+      <main className="dashboard-failed">
+       <h1 className="dashboard-failed__text">You must logged in to see this page.</h1>
+
+        <Link to="/" className="dashboard-failed__link">
+          Click here to sign up
+        </Link>
+
+
+      </main>
+    );
   }
 
   if (isLoading) {
-    return <main className="dashboard">Loading...</main>;
+    return <main className="dashboard-loading">Loading...</main>;
   }
 
   return (

@@ -33,9 +33,6 @@ export default function HomePage() {
 
   const handleSwipeRight = async () => {
     try {
-      console.log("current movie index:", currentMovieIndex);
-      console.log("movies:", movies);
-
       const currentMovie = movies[currentMovieIndex];
 
       localStorage.setItem("currentMovieIndex", currentMovieIndex + 1);
@@ -98,8 +95,12 @@ export default function HomePage() {
       {showMatchPopup && (
         <div className="match-popup">
           <h2>Match found!</h2>
-          <button className="match-popup__btn"
-          onClick={() => setShowMatchPopup(false)}>Close</button>
+          <button
+            className="match-popup__btn"
+            onClick={() => setShowMatchPopup(false)}
+          >
+            Close
+          </button>
         </div>
       )}
       <animated.div

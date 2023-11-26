@@ -10,6 +10,7 @@
   align-items: center;
   margin: 0.5rem;
   border-radius: $border-radius;
+  box-shadow: $box-shadow;
 
   &__title {
     font-weight: 600;
@@ -21,6 +22,7 @@
   &__img {
     width: 8rem;
     border-radius: $border-radius;
+    box-shadow: $box-shadow;
   }
 }
 
@@ -60,7 +62,7 @@ input[type="checkbox"]:before {
   left: 0;
   width: 20px;
   height: 20px;
-  background-color: #fff;
+  background-color: $white;
   border-radius: 50%;
   transition: transform 0.3s;
 }

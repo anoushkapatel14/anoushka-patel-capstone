@@ -53,12 +53,10 @@ export default function MatchesMovieCard({ match, movies }) {
 
   useEffect(() => {
     localStorage.setItem("watched", JSON.stringify(watched));
-    console.log("Saved watched:", watched);
   }, [watched]);
 
   useEffect(() => {
     localStorage.setItem("ratings", JSON.stringify(rating));
-    console.log("Saved ratings:", rating);
   }, [rating]);
 
   return (
@@ -81,7 +79,6 @@ export default function MatchesMovieCard({ match, movies }) {
               onChange={() => {
                 const newWatched = { ...watched };
                 newWatched[match.id] = !newWatched[match.id];
-                console.log("New watched state:", newWatched);
 
                 setWatched(newWatched);
               }}
@@ -94,7 +91,6 @@ export default function MatchesMovieCard({ match, movies }) {
               value={rating[match.id] || 0}
               onChange={(newRating) => {
                 const newRatings = { ...rating, [match.id]: newRating };
-                console.log("New ratings state:", newRatings);
 
                 setRating(newRatings);
               }}

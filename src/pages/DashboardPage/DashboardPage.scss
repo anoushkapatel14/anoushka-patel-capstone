@@ -1,6 +1,29 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
+.dashboard-failed {
+  margin: $page-margin;
+
+  &__text {
+    color: $white;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    padding-top: 3rem;
+  }
+
+  &__link {
+    @include dashboard-signup-login-btn;
+  }
+}
+
+.dashboard-loading {
+  margin: $page-margin;
+  color: $white;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
 .main {
   margin-top: 8rem;
   max-width: $max-width;
@@ -38,15 +61,7 @@
 
 .dashboard-nav {
   &__link {
-    background-color: $blue;
-    text-decoration: none;
-    color: $navy;
-    font-size: 1rem;
-    padding: 0.5rem;
-    @include btn;
-    border-radius: $border-radius;
-    margin-bottom: 2rem;
-    font-weight: 500;
+    @include dashboard-signup-login-btn;
   }
 }
 

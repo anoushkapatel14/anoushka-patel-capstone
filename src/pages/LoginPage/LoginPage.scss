@@ -2,15 +2,17 @@
 @use "../../styles/partials/mixins" as *;
 
 .login-page {
- @include login-signup-card;
- margin: 8rem 2rem 8rem 2rem;
+  @include login-signup-card;
+  margin: 8rem 2rem 8rem 2rem;
 }
 
 .login {
+  &__button {
+    @include login-btn;
+    background-color: $white;
+  }
 
-    &__button {
-        @include login-btn;
-        background-color: white;
-    }
-
+  &__message {
+    padding-top: 1rem;
+  }
 }

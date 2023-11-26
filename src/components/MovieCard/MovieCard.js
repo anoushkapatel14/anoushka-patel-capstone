@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import "./MovieCard.scss";
 
@@ -45,11 +45,11 @@ export default function MovieCard({
       : "";
   };
   if (!movies || movies.length === 0) {
-    return <p>No movies available</p>;
+    return <p className="fail">No movies available</p>;
   }
   const currentMovie = movies[currentMovieIndex];
   if (!currentMovie) {
-    return <p>No more movies to display</p>;
+    return <p className="fail">No more movies to display</p>;
   }
 
   const formattedReleaseDate = new Date(

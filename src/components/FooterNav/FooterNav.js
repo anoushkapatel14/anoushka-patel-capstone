@@ -23,7 +23,7 @@ export default function FooterNav() {
 
       <div className="footer__icons-div">
         <Link to="/matches">
-          <img className="footer__icon" src={movie} alt="heart icon" />
+          <img className="footer__icon" src={movie} alt="clapperboard icon" />
         </Link>
         <p className="footer__text">Matches</p>
       </div>

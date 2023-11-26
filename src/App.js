@@ -13,12 +13,10 @@ import "@smastrom/react-rating/style.css";
 export default function App() {
   const [name, setName] = useState(null);
   const [data, setData] = useState(null);
-  const isLoggedIn = !!name; // Check if the user is logged in
-
 
   return (
     <BrowserRouter>
-      <Header name={name} data={data} setData={setData} />
+      <Header data={data} />
       <div className="App">
         <Routes>
           <Route

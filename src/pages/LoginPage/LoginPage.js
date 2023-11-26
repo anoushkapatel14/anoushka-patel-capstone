@@ -45,7 +45,7 @@ export default function Login({ setName }) {
       </form>
 
       <p>
-        Need an account? <Link to="/signup">Sign up</Link>
+        Need an account? <Link to="/">Sign up</Link>
       </p>
     </main>
   );

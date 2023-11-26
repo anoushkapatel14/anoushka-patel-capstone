@@ -2,44 +2,43 @@
 @use "../../styles/partials/mixins" as *;
 
 .signup-page {
+  margin: $page-margin;
 
-    margin: $page-margin;
-
-    &__form {
-   @include login-signup-card;
-    }
+  &__form {
+    @include login-signup-card;
+  }
 }
 
-.signup-text{
-    margin: 2rem 1.5rem;
-  
-    &__title {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: white;
-    }
-  
-    &__description {
-      font-size: 1rem;
-      line-height: 1.5;
-      color: white;
-      font-weight: 500;
-    }
+.signup-text {
+  margin: 2rem 1.5rem;
 
-    &__signup {
-        color: white;
-        font-weight: 600;
-        font-size: 1.5rem;
-
-    
-    }
+  &__title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: $white;
   }
 
-.signup {
+  &__description {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: $white;
+    font-weight: 500;
+  }
 
-    &__button {
-        @include login-btn;
-        background-color: white;
-    }
+  &__signup {
+    color: $white;
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
 }
 
+.signup {
+  &__button {
+    @include login-btn;
+    background-color: $white;
+  }
+
+  &__message {
+    padding-top: 1rem;
+  }
+}
