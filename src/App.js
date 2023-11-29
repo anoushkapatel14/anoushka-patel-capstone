@@ -11,7 +11,6 @@ import { useState } from "react";
 import "@smastrom/react-rating/style.css";
 
 export default function App() {
-  const [name, setName] = useState(null);
   const [data, setData] = useState(null);
 
   return (
@@ -23,7 +22,7 @@ export default function App() {
             path="/dashboard"
             element={<DashboardPage data={data} setData={setData} />}
           />
-          <Route path="login" element={<Login setName={setName} />} />
+          <Route path="login" element={<Login />} />
           <Route path="/movies" element={<HomePage />} />
           <Route path="home" element={<Navigate to="/" />} />
           <Route path="matches" element={<MatchesPage />} />

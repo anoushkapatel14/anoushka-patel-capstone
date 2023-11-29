@@ -10,6 +10,7 @@
   &__button {
     @include login-btn;
     background-color: $white;
+    cursor: pointer;
   }
 
   &__message {

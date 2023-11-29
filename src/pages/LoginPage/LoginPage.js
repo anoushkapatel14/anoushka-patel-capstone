@@ -4,7 +4,7 @@ import { useState } from "react";
 import Input from "../../components/Input/Input";
 import { useNavigate, Link } from "react-router-dom";
 
-export default function Login({ setName }) {
+export default function Login() {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
@@ -19,7 +19,6 @@ export default function Login({ setName }) {
       });
 
       sessionStorage.setItem("token", response.data.token);
-      setName(response.data.name);
 
       setSuccess(true);
 

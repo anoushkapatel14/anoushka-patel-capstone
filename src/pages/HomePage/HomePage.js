@@ -13,8 +13,30 @@ export default function HomePage() {
   const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
   const [swipeData, setSwipeData] = useState(null);
   const [showMatchPopup, setShowMatchPopup] = useState(false);
+  const [userId, setUserId] = useState(null); 
+
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchUserId = async () => {
+     const token = sessionStorage.getItem("token");
+   
+     try {
+       const response = await axios.get("http://localhost:8081/profile", {
+         headers: {
+           Authorization: "Bearer " + token,
+         },
+       });
+       setUserId(response.data.id); 
+       console.log(response.data.id);
+     } catch (error) {
+       console.error(error);
+     }
+    };
+   
+    fetchUserId();
+    }, []);
 
   useEffect(() => {
     const storedIndex = localStorage.getItem(
@@ -40,7 +62,8 @@ export default function HomePage() {
       const response = await axios.post(
         `${process.env.REACT_APP_BASE_URL}/api/likes`,
         {
-          userId: "2",
+          //to be discussed
+          userId: userId,
           movieId: currentMovie.id,
           title: currentMovie.title,
           poster_path: currentMovie.poster_path,
